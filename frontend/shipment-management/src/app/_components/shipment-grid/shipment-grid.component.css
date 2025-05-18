@@ -1,0 +1,42 @@
+.grid-actions {
+  display: flex;
+  flex: 1;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+.grid-actions-header {
+  width: 100%;
+}
+
+.grid-actions .search-input {
+  position: relative;
+}
+
+.grid-actions .search-icon {
+  position: absolute;
+  left: 1.5rem;
+  top: -0.125rem;
+}
+
+.grid-container {
+  position: relative;
+  border: 1px solid #dddddd;
+  height: 30rem;
+  padding-top: calc(4rem + 1px);
+}
+
+.grid-header {
+  position: absolute;
+  top: 0;
+  width: calc(100% - 1rem);
+  border-bottom: 1px solid #dddddd;
+  height: 3rem;
+  padding: 1rem 0 0 1rem;
+}
+
+.ag-root-wrapper {
+  border: 1px solid #dddddd;
+}

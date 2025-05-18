@@ -1,0 +1,6 @@
+&:root {
+  --text-size: 14px;
+  --text-line-height: 1.25rem;
+  --text-color: #333333;
+  --icon-hover-colour: #333333;
+}

@@ -1,0 +1,60 @@
+<div class="create-shipment-component">
+  <div class="dialog-box">
+    <div class="dialog-header">
+      <h2 class="mat-dialog-title">Add New Shipment</h2>
+      <mat-icon mat-dialog-close (click)="onClose()" (keyup)="onClose()">close</mat-icon>
+    </div>
+    <mat-dialog-content class="mat-typography">
+      <form (ngSubmit)="onSubmit()" [formGroup]="createShipmentForm" class="search-form">
+        <div class="form-field-wrapper">
+          <label for="name">Name*</label>
+          <input id="name" type="text" class="form-control" formControlName="name" />
+          @if (form['name'].invalid && (form['name'].dirty || form['name'].touched)) {
+          <div class="alert">
+            @if (form['name'].hasError('required')) {
+            <div class="form-control-error">Name is required.</div>
+            }
+          </div>
+          }
+        </div>
+        <div class="form-field-wrapper">
+          <label for="status">Status*</label>
+          <select id="status" class="form-control" formControlName="status">
+            <option [value]="null"></option>
+            <option *ngFor="let option of selectStatusOptions" [value]="option.value" [textContent]="option.text"></option>
+          </select>
+          @if (form['status'].invalid && (form['status'].dirty || form['status'].touched)) {
+          <div class="alert">
+            @if (form['status'].hasError('required')) {
+            <div class="form-control-error">Status is required.</div>
+            }
+          </div>
+          }
+        </div>
+        <div class="form-field-wrapper">
+          <label for="desiredDeliveryDate">Desired Delivery Date*</label>
+          <input id="desiredDeliveryDate" class="form-control icon-right" formControlName="desiredDeliveryDate" placeholder="YYYY/MM/DD" [min]="minDate" [matDatepicker]="picker" />
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          @if (form['desiredDeliveryDate'].invalid && (form['desiredDeliveryDate'].dirty || form['desiredDeliveryDate'].touched)) {
+          <div class="alert">
+            @if (form['desiredDeliveryDate'].hasError('required') && !form['desiredDeliveryDate'].hasError('matDatepickerParse')) {
+            <div class="form-control-error">Desired Delivery Date is required.</div>
+            }
+            @if (form['desiredDeliveryDate'].hasError('matDatepickerParse')) {
+            <div class="form-control-error">Invalid Date format.</div>
+            }
+            @if (form['desiredDeliveryDate'].hasError('matDatepickerMin')) {
+            <div class="form-control-error">Delivery Date must be today or later.</div>
+            }
+          </div>
+          }
+        </div>
+      </form>
+    </mat-dialog-content>
+    <mat-dialog-actions class="multiple">
+      <button (click)="onClose()" [mat-dialog-close]="true">Cancel</button>
+      <button (click)="onSubmit()" [disabled]="createShipmentForm.invalid">Save</button>
+    </mat-dialog-actions>
+  </div>
+</div>

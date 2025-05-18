@@ -1,0 +1,8 @@
+<div>
+  <p></p>
+  <h2>State Management Demo</h2>
+  <p>The following information is loaded into another component from a state management service. Changes in the grid are immediately reflected here.</p>
+  <ng-container *ngIf="gridState$ | async as gridState">
+    <pre>{{gridState | json}}</pre>
+  </ng-container>
+</div>

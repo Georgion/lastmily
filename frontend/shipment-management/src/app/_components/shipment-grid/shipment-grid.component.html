@@ -1,0 +1,58 @@
+<div class="shipment-grid-component">
+  <div class="grid-actions">
+    <div class="grid-actions-header">
+      <h2>Shipment Grid Actions</h2>
+    </div>
+    <div>
+      <button (click)="addShipment()">Add Shipment</button>
+    </div>
+    <div class="filter-status">
+      <label for="filter-status">
+        <span>Filter by status</span>
+      </label>
+      <select id="filter-status" (change)="applyStatusFilter($event)">
+        <option value=""></option>
+        <option value="Pending">Pending</option>
+        <option value="Shipped">Shipped</option>
+        <option value="Delivered">Delivered</option>
+      </select>
+    </div>
+    <div class="search">
+      <label for="input-search">
+        <span>Search by Customer name</span>
+      </label>
+      <span class="search-input">
+        <input id="input-search" type="text" class="icon-left" (input)="search($event)" placeholder="Type at least 3 letters to start searching..." />
+        <span class="search-icon">
+          <mat-icon>search</mat-icon>
+        </span>
+      </span>
+    </div>
+    <div>
+      <button (click)="deleteSelectedShipments()">Delete Selected Shipments</button>
+    </div>
+  </div>
+  <div class="grid-container">
+    <div class="grid-header">
+      <h2>Shipment Grid</h2>
+    </div>
+    <ag-grid-angular #shipmentGrid style="width: 100%; height: 100%"
+      [modules]="gridConfig.gridModules"
+      [theme]="gridConfig.gridOptions.theme"
+      [getRowId]="gridConfig.gridOptions.getRowId"
+      [rowModelType]="gridConfig.gridOptions.rowModelType"
+      [cacheBlockSize]="gridConfig.gridOptions.cacheBlockSize"
+      [maxBlocksInCache]="gridConfig.gridOptions.maxBlocksInCache"
+      [paginationPageSize]="gridConfig.gridOptions.paginationPageSize"
+      [paginationPageSizeSelector]="gridConfig.gridOptions.paginationPageSizeSelector"
+      (selectionChanged)="onSelectionChanged()"
+      (sortChanged)="onSortChanged()"
+      (filterChanged)="onFilterChanged()"
+      (paginationChanged)="onPaginationChanged()"
+      (gridReady)="onGridReady($event)"
+    />
+  </div>
+  <div>
+    <app-state-management></app-state-management>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="dialog-box">
+  <div class="dialog-header">
+    <h2 class="mat-dialog-title" [textContent]="data['title']">title</h2>
+    <mat-icon mat-dialog-close (click)="onClose()" (keyup)="onClose()">close</mat-icon>
+  </div>
+  <mat-dialog-content class="mat-typography">
+    <div [class]="data['type']">
+      <p [textContent]="data['message']"></p>
+      <br />
+    </div>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button (click)="onClose()" [mat-dialog-close]="true">OK</button>
+  </mat-dialog-actions>
+</div>
